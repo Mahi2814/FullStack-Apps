@@ -1,0 +1,13 @@
+let mongoose=require("mongoose")
+let express=require("express")
+let cors=require("cors")
+const rt = require("./routes/rt")
+mongoose.connect("mongodb://localhost:27017/v25hfs1ecomdb").then(()=>{
+    console.log("ok")
+})
+let app=express()
+app.listen(5000)
+app.use(express.json())
+app.use(express.urlencoded({"extended":true}))
+app.use(cors())
+app.use("/",rt)
